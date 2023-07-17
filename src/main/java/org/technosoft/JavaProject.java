@@ -1,27 +1,20 @@
-package org.technosoft.fitness_v3;
+package org.technosoft;
 
-import java.util.LinkedList;
+import org.technosoft.service.MembershipManagement;
+
+import java.io.IOException;
 
 public class JavaProject {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        String mem;
-//        MembershipManagement mm;
-//        FileHandler fh;
-        LinkedList<Member> members;
-        int choice;
-
-        var singleMemb = new SingleClubMember(1, "Mike", 'c', 10.0, 1);
-        var multMemb = new MultiClubMember(1, "Mike", 'c', 10.0, 4);
-        System.out.println(singleMemb + "\n" + multMemb);
-
-        var menage = new MembershipManagement();
-        menage.printClubOptions();
-        menage.getIntInput();
-
-
-
-
+        MembershipManagement mm = new MembershipManagement();
+        switch (mm.getChoice()) {
+            case 1 -> mm.addMembers();
+            case 2 -> mm.removeMember();
+            case 3 -> mm.printMemberInfo();
+            case 4 -> mm.printAllMemberInfo();
+            case -1 -> System.exit(0);
+        }
     }
 }
